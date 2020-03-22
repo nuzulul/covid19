@@ -9,12 +9,22 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js'></script>
     <title>PUSAT SARANA EDUKASI DAN DATA COVID-19 INDONESIA</title>
+<style>
+    a {
+color:#dc3545;
+}
+
+a:hover{
+text-decoration:none;
+color:green;
+}
+</style>
 </head>
 <body>
 <header style="margin-top:20px;">
   <div class="container"><center>
-    <a href="https://www.bsmijatim.org"><img src="https://1.bp.blogspot.com/-FHd2HzjMViY/XlyAHHXid6I/AAAAAAAADdo/9LGV4_sAHiU0KZWpm1FeAcLRNhGH8jS1QCLcBGAsYHQ/s1600/logobsmiwebalpha.png" style="max-width:200px;"></a>
-    <h1>PUSAT SARANA EDUKASI DAN DATA COVID-19</h1>
+    <a href="https://www.bsmijatim.org"><img src="https://1.bp.blogspot.com/-eIESVSEa98Y/XncWkFqp_hI/AAAAAAAADlM/Q2dfDW43a3s-uOwzKsUndRBMVOnOk0UJgCLcBGAsYHQ/s1600/Logo%2BBSMI%2BJATIM%2Bcovid19.png" style="max-width:200px;"></a></br></br>
+    <h3>PUSAT SARANA EDUKASI DAN DATA COVID-19</h3>
   </center></div>
 </header>
 
@@ -213,6 +223,7 @@ $(document).ready(function() {
        url:"https://cors-anywhere.herokuapp.com/https://docs.google.com/spreadsheets/d/e/2PACX-1vR_Yc7b4VM02Jhiwl7XnsaAfjMHGd6PO9yp74JmIpe91M1f3rdXVpLWeTsxd3SFh5UJbh1-khVDTnMx/pub?output=csv",
        //dataType: 'json',
        type:'GET',
+       cache: false,
        headers: {"X-Requested-With": "some value"},
        success:function(data,status, xhr){
            var dataq = xhr.responseText;//console.log(dataq);
@@ -233,7 +244,7 @@ $(document).ready(function() {
 
 <footer>
 <div class="container"><center>
-<h5>Oleh Tim satgas Covid-19 BSMI Jawa Timur</h5>
+<h5>Oleh Tim Satgas Covid-19 BSMI Jawa Timur</h5>
 </center></div>
 </footer>
 

@@ -61,6 +61,98 @@ color:green;
 </div>
 </lajukematian>
 
+<data>
+  <div class="container table-responsive">
+  <h5 data-aos='zoom-in-up' style='margin:30px 0px 20px 10px;text-align:center;'>DATA KASUS COVID-19 DI INDONESIA</h5>
+  <center><p id="updatekasus" >Update:</p></center>
+    <table class="table table-sm table-dark">
+      <thead>
+    <tr>
+      <th scope="col">Hari</th>
+      <th scope="col">Tanggal</th>
+      <th scope="col">Total Kasus</th>
+      <th scope="col">Sembuh</th>
+      <th scope="col">Meninggal</th>
+    </tr>
+    </thead>
+     <tbody>
+      <div id="tabledata"></div>
+     </tbody>
+    </table><center><div class='dataspinner spinner-border'></div></center>
+  </div>
+<script>
+function CSVToArray( strData, strDelimiter ){
+        strDelimiter = (strDelimiter || ",");
+        var objPattern = new RegExp(
+            (
+                // Delimiters.
+                "(\\" + strDelimiter + "|\\r?\\n|\\r|^)" +
+
+                // Quoted fields.
+                "(?:\"([^\"]*(?:\"\"[^\"]*)*)\"|" +
+
+                // Standard fields.
+                "([^\"\\" + strDelimiter + "\\r\\n]*))"
+            ),
+            "gi"
+            );
+        var arrData = [[]];
+        var arrMatches = null;
+        while (arrMatches = objPattern.exec( strData )){
+            var strMatchedDelimiter = arrMatches[ 1 ];
+            if (
+                strMatchedDelimiter.length &&
+                strMatchedDelimiter !== strDelimiter
+                ){
+                arrData.push( [] );
+
+            }
+
+            var strMatchedValue;
+            if (arrMatches[ 2 ]){
+                strMatchedValue = arrMatches[ 2 ].replace(
+                    new RegExp( "\"\"", "g" ),
+                    "\""
+                    );
+
+            } else {
+                strMatchedValue = arrMatches[ 3 ];
+
+            }
+
+            arrData[ arrData.length - 1 ].push( strMatchedValue );
+        }
+        return( arrData );
+    }
+    
+$(document).ready(function() {
+  $.ajax({
+       url:"https://cors-anywhere.herokuapp.com/https://docs.google.com/spreadsheets/d/e/2PACX-1vR_Yc7b4VM02Jhiwl7XnsaAfjMHGd6PO9yp74JmIpe91M1f3rdXVpLWeTsxd3SFh5UJbh1-khVDTnMx/pub?output=csv",
+       //dataType: 'json',
+       type:'GET',
+       cache: false,
+       headers: {"X-Requested-With": "some value"},
+       success:function(data,status, xhr){
+           var dataq = xhr.responseText;//console.log(dataq);
+           var data = CSVToArray(dataq);
+           //console.log(data);
+           for (var i = data.length-1 ; i > 0  ; i--) {
+             $('data table tbody').append('<tr><th>'+data[i][0]+'</th><th>'+data[i][1]+'</th><th>'+data[i][2]+'</th><th>'+data[i][3]+'</th><th>'+data[i][4]+'</th></tr>');
+             if (i === data.length-1) {
+             $('#update').html('Update : '+data[i][1]+' / Hari Ke '+data[i][0]);
+             $('#updatekematian').html('Update : '+data[i][1]+' / Hari Ke '+data[i][0]);
+             $('#updatekasus').html('Update : '+data[i][1]+' / Hari Ke '+data[i][0]);
+             }
+           }
+           $( ".dataspinner" ).toggle();
+       },
+       error:function(){
+           console.log("Error");
+       }  
+  })
+});
+</script>
+</data>
 
 <bsmipost>
 <script type='text/javascript'>
@@ -191,98 +283,7 @@ border-radius:5px 5px 5px 5px;
 </div>
 </inventory>
 
-<data>
-  <div class="container table-responsive">
-  <h5 data-aos='zoom-in-up' style='margin:30px 0px 20px 10px;text-align:center;'>DATA KASUS COVID-19 DI INDONESIA</h5>
-  <center><p id="updatekasus" >Update:</p></center>
-    <table class="table table-sm table-dark">
-      <thead>
-    <tr>
-      <th scope="col">Hari</th>
-      <th scope="col">Tanggal</th>
-      <th scope="col">Total Kasus</th>
-      <th scope="col">Sembuh</th>
-      <th scope="col">Meninggal</th>
-    </tr>
-    </thead>
-     <tbody>
-      <div id="tabledata"></div>
-     </tbody>
-    </table><center><div class='dataspinner spinner-border'></div></center>
-  </div>
-<script>
-function CSVToArray( strData, strDelimiter ){
-        strDelimiter = (strDelimiter || ",");
-        var objPattern = new RegExp(
-            (
-                // Delimiters.
-                "(\\" + strDelimiter + "|\\r?\\n|\\r|^)" +
 
-                // Quoted fields.
-                "(?:\"([^\"]*(?:\"\"[^\"]*)*)\"|" +
-
-                // Standard fields.
-                "([^\"\\" + strDelimiter + "\\r\\n]*))"
-            ),
-            "gi"
-            );
-        var arrData = [[]];
-        var arrMatches = null;
-        while (arrMatches = objPattern.exec( strData )){
-            var strMatchedDelimiter = arrMatches[ 1 ];
-            if (
-                strMatchedDelimiter.length &&
-                strMatchedDelimiter !== strDelimiter
-                ){
-                arrData.push( [] );
-
-            }
-
-            var strMatchedValue;
-            if (arrMatches[ 2 ]){
-                strMatchedValue = arrMatches[ 2 ].replace(
-                    new RegExp( "\"\"", "g" ),
-                    "\""
-                    );
-
-            } else {
-                strMatchedValue = arrMatches[ 3 ];
-
-            }
-
-            arrData[ arrData.length - 1 ].push( strMatchedValue );
-        }
-        return( arrData );
-    }
-    
-$(document).ready(function() {
-  $.ajax({
-       url:"https://cors-anywhere.herokuapp.com/https://docs.google.com/spreadsheets/d/e/2PACX-1vR_Yc7b4VM02Jhiwl7XnsaAfjMHGd6PO9yp74JmIpe91M1f3rdXVpLWeTsxd3SFh5UJbh1-khVDTnMx/pub?output=csv",
-       //dataType: 'json',
-       type:'GET',
-       cache: false,
-       headers: {"X-Requested-With": "some value"},
-       success:function(data,status, xhr){
-           var dataq = xhr.responseText;//console.log(dataq);
-           var data = CSVToArray(dataq);
-           //console.log(data);
-           for (var i = data.length-1 ; i > 0  ; i--) {
-             $('data table tbody').append('<tr><th>'+data[i][0]+'</th><th>'+data[i][1]+'</th><th>'+data[i][2]+'</th><th>'+data[i][3]+'</th><th>'+data[i][4]+'</th></tr>');
-             if (i === data.length-1) {
-             $('#update').html('Update : '+data[i][1]+' / Hari Ke '+data[i][0]);
-             $('#updatekematian').html('Update : '+data[i][1]+' / Hari Ke '+data[i][0]);
-             $('#updatekasus').html('Update : '+data[i][1]+' / Hari Ke '+data[i][0]);
-             }
-           }
-           $( ".dataspinner" ).toggle();
-       },
-       error:function(){
-           console.log("Error");
-       }  
-  })
-});
-</script>
-</data>
 
 <group>
 <div class='container'>

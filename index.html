@@ -81,6 +81,26 @@ color:green;
 </div>
 </kasusbaru>
 
+<kasusaktif>
+<div class='container'>
+<h5 data-aos='zoom-in-up' style='margin:30px 0px 20px 10px;text-align:center;'>KASUS AKTIF COVID-19 DI INDONESIA</h5>
+<center><p id="updatekasusaktif" >Update:</p></center>
+<div class="row" style="text-align:center;">
+<iframe width="1000px" height="371" style="margin:0 auto;" seamless frameborder="0" scrolling="no" src="https://docs.google.com/spreadsheets/d/e/2PACX-1vR_Yc7b4VM02Jhiwl7XnsaAfjMHGd6PO9yp74JmIpe91M1f3rdXVpLWeTsxd3SFh5UJbh1-khVDTnMx/pubchart?oid=959617448&amp;format=interactive"></iframe>
+</div>
+</div>
+</kasusaktif>
+
+<rasiokematian>
+<div class='container'>
+<h5 data-aos='zoom-in-up' style='margin:30px 0px 20px 10px;text-align:center;'>PROSENTASE RASIO KEMATIAN COVID-19 DI INDONESIA</h5>
+<center><p id="updaterasiokematian" >Update:</p></center>
+<div class="row" style="text-align:center;">
+<iframe width="1000px" height="371" style="margin:0 auto;" seamless frameborder="0" scrolling="no" src="https://docs.google.com/spreadsheets/d/e/2PACX-1vR_Yc7b4VM02Jhiwl7XnsaAfjMHGd6PO9yp74JmIpe91M1f3rdXVpLWeTsxd3SFh5UJbh1-khVDTnMx/pubchart?oid=1416649722&amp;format=interactive"></iframe>
+</div>
+</div>
+</rasiokematian>
+
 <data>
   <div class="container table-responsive">
   <h5 data-aos='zoom-in-up' style='margin:30px 0px 20px 10px;text-align:center;'>DATA KASUS COVID-19 DI INDONESIA</h5>
@@ -164,6 +184,8 @@ $(document).ready(function() {
              $('#updatekasus').html('Update : '+data[i][1]+' / Hari Ke '+data[i][0]);
              $('#updatetotalkasus').html('Update : '+data[i][1]+' / Hari Ke '+data[i][0]);
              $('#updatekasusbaru').html('Update : '+data[i][1]+' / Hari Ke '+data[i][0]);
+             $('#updatekasusaktif').html('Update : '+data[i][1]+' / Hari Ke '+data[i][0]);
+             $('#updaterasiokematian').html('Update : '+data[i][1]+' / Hari Ke '+data[i][0]);
              }
            }
            $( ".dataspinner" ).toggle();
